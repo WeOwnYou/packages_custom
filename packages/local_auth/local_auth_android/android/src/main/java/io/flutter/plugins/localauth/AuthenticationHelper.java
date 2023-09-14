@@ -3,6 +3,8 @@
 // found in the LICENSE file.
 package io.flutter.plugins.localauth;
 
+import static androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -75,7 +77,7 @@ class AuthenticationHelper extends BiometricPrompt.AuthenticationCallback
             .setSubtitle(strings.getBiometricHint())
             .setConfirmationRequired(options.getSensitiveTransaction());
     promptBuilder.setNegativeButtonText(strings.getCancelButton());
-    promptBuilder.setAllowedAuthenticators(allowedAuthenticators);
+    promptBuilder.setAllowedAuthenticators(BIOMETRIC_STRONG);
     this.promptInfo = promptBuilder.build();
   }
 
